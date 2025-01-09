@@ -1,2 +1,5 @@
 .env
 rough.ipynb
+routers/__pycache__/
+__pycache__
+

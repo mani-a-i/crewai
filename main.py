@@ -2,6 +2,8 @@ from models import llm_registry as global_llm
 from models.get_models import get_vanillaMISTRAL8x7b
 from fastapi import FastAPI
 from routers.agent import router
+import warnings
+warnings.filterwarnings('ignore')
 
 def load_models():
     print("LOADING MODELS........")

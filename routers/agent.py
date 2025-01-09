@@ -10,7 +10,7 @@ def agentic_routers():
 
     @router.post("/vanillaMistral",
                  tags=['vanillaEndpoints'],
-                 summary="Endpoints to call MISTRAL8x7b LLMs")
+                 summary="Endpoints to call MISTRAL8x7b LLM")
     async def call_llm(payload: VanillaChatPayload):
         prompt = mistral_prompt_template(payload.prompt)       
 
