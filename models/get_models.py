@@ -14,8 +14,8 @@ def get_vanillaMISTRAL8x7b():
     return llm
 
 
-prompt_template = "<s> [INST] {input_msg} [/INST] Model answer</s>"
-prompt = "Hi"
-input_prompt = prompt_template.format(input_msg = prompt)
-out = llm.invoke(input_prompt)
-print(out[len(input_prompt):])
+# prompt_template = "<s> [INST] {input_msg} [/INST] Model answer</s>"
+# prompt = "Hi"
+# input_prompt = prompt_template.format(input_msg = prompt)
+# out = llm.invoke(input_prompt)
+# print(out[len(input_prompt):])
