@@ -13,6 +13,24 @@ def get_vanillaMISTRAL8x7b():
 
     return llm
 
+def get_vanillaZephyr_7b_beta():
+    llm = HuggingFaceHub(
+        repo_id = env.ZEPHYR_REPO_ID,
+        huggingfacehub_api_token = env.HF_API_TOKEN,
+        task = "text-generation"
+    )
+
+    return llm
+
+def get_vanillaLlama3_8B_Instruct():
+    llm = HuggingFaceHub(
+        repo_id = env.Llama3_8B_Instruct,
+        huggingfacehub_api_token = env.HF_API_TOKEN,
+        task = "text-generation"
+    )
+
+    return llm
+
 
 # prompt_template = "<s> [INST] {input_msg} [/INST] Model answer</s>"
 # prompt = "Hi"
