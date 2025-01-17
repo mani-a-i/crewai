@@ -9,12 +9,12 @@ class Settings(BaseSettings):
 
     MISTRAL_REPO_ID: str|None = None
     MISTRAL8x7b_REPO_ID: str|None = None
+    MISTRAL7b_REPO_ID: str|None = None
     ZEPHYR_REPO_ID: str|None = None
     Llama3_8B_Instruct: str|None = None
-    HF_API_TOKEN: str|None = None
+    HUGGINGFACEHUB_API_TOKEN: str|None = None
 
 
-@lru_cache
 def get_settings():
     return Settings()
 

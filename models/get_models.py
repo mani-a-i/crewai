@@ -1,33 +1,31 @@
-from langchain_community.llms.huggingface_hub import HuggingFaceHub
+from langchain_huggingface import HuggingFaceEndpoint
 from settings import get_settings
 
 env = get_settings()
 
 
-def get_vanillaMISTRAL8x7b():
-    llm = HuggingFaceHub(
-        repo_id = env.MISTRAL8x7b_REPO_ID,
-        huggingfacehub_api_token = env.HF_API_TOKEN,
-        task = "text-generation"
-    )
 
+def get_vanillaMISTRAL():
+    llm = HuggingFaceEndpoint(
+    repo_id= env.MISTRAL7b_REPO_ID,       
+    huggingfacehub_api_token=env.HUGGINGFACEHUB_API_TOKEN
+    )
     return llm
 
 def get_vanillaZephyr_7b_beta():
-    llm = HuggingFaceHub(
+    llm = HuggingFaceEndpoint(
         repo_id = env.ZEPHYR_REPO_ID,
-        huggingfacehub_api_token = env.HF_API_TOKEN,
-        task = "text-generation"
+        huggingfacehub_api_token = env.HUGGINGFACEHUB_API_TOKEN
     )
 
     return llm
 
 def get_vanillaLlama3_8B_Instruct():
-    llm = HuggingFaceHub(
-        repo_id = env.Llama3_8B_Instruct,
-        huggingfacehub_api_token = env.HF_API_TOKEN,
-        task = "text-generation"
-    )
+    llm = HuggingFaceEndpoint(
+                    repo_id=env.Llama3_8B_Instruct,       
+                    huggingfacehub_api_token=env.HUGGINGFACEHUB_API_TOKEN,
+                    task = "text-generation"
+                    )   
 
     return llm
 
