@@ -12,9 +12,9 @@ def agentic_routers():
                  tags=['vanillaEndpoints'],
                  summary="Endpoints to call MISTRAL8x7b LLM")
     async def call_llm(payload: VanillaChatPayload):
-        prompt = mistral_prompt_template(payload.prompt)       
+        prompt = mistral_prompt_template(payload.prompt)     
 
-        output = global_llm.Mistral8x7b.invoke(prompt)[len(prompt):]
+        output = global_llm.Mistral8x7b.invoke(prompt)
 
         return {
             "llm_output":output
@@ -26,7 +26,7 @@ def agentic_routers():
                  summary="Endpoints to call Zephyr 7b betaLLM")
     async def call_llm(payload: VanillaChatPayload):
         prompt = zephyr_prompt_template(payload.prompt)   
-        output = global_llm.Zephyr_7b_beta.invoke(prompt)[len(prompt):]
+        output = global_llm.Zephyr_7b_beta.invoke(prompt)
 
         return {
             "llm_output":output
@@ -37,7 +37,7 @@ def agentic_routers():
                  summary="Endpoints to call vanilla llama 3b Instruct")
     async def call_llm(payload: VanillaChatPayload):
         prompt = llama_prompt_template(payload.prompt)
-        output = global_llm.llama3_8B_Instruct.invoke(prompt)[len(prompt):]
+        output = global_llm.llama3_8B_Instruct.invoke(prompt)
 
         return {
             "llm_output":output
