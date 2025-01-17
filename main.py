@@ -1,5 +1,5 @@
 from models import llm_registry as global_llm
-from models.get_models import get_vanillaMISTRAL8x7b,get_vanillaZephyr_7b_beta, get_vanillaLlama3_8B_Instruct
+from models.get_models import get_vanillaMISTRAL,get_vanillaZephyr_7b_beta, get_vanillaLlama3_8B_Instruct
 from fastapi import FastAPI
 from routers.agent import router
 import warnings
@@ -7,7 +7,7 @@ warnings.filterwarnings('ignore')
 
 def load_models():
     print("LOADING MODELS........")
-    global_llm.Mistral8x7b = get_vanillaMISTRAL8x7b()
+    global_llm.Mistral8x7b = get_vanillaMISTRAL()
     global_llm.Zephyr_7b_beta = get_vanillaZephyr_7b_beta()
     global_llm.llama3_8B_Instruct = get_vanillaLlama3_8B_Instruct()
 
