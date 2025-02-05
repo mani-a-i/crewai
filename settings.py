@@ -13,6 +13,7 @@ class Settings(BaseSettings):
     ZEPHYR_REPO_ID: str|None = None
     Llama3_8B_Instruct: str|None = None
     HUGGINGFACEHUB_API_TOKEN: str|None = None
+    GEMINI_API_KEY:str|None = None
 
 
 def get_settings():
