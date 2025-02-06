@@ -1,0 +1,21 @@
+Customer_support_agent_task:
+  description: |
+    Classifiy the user Utterance :`{user_utterances}` into one of the following scenarios ["DeclinedTransaction","DisputeTransaction","MultipleTransactions","UnrecognizedTransactions","SingleTransactions","NA"].
+    Here are description for each of the scenarios. 
+    1.DeclinedTransaction:This scenario is applicable when the customer wants to know why the transaction was declined/card not getting accepted/card not working/charge refused/rejected.  
+    2.DisputeTransaction:This scenario is applicable when the user has clear question about a charge which was not done by the user but showing on their creadit card or bank statement and asks to challenge it or dispute it.
+    3.MultipleTransactions:This scenario is applicable when the user is seeking assistance regarding multiple or latest transactions/charges/purchases(having plural references).
+    4.UnrecognizedTransactions:This scenario is applicable when the user cannot recognize a specific charge(questioning a charge,wondering about a charge,no idea, cannot recall,not able to identify) or is not familiar about their transaction/charge on their card. Note:Classify scenario as 'DisputeTransaction' if the user implies strongly that they see a charge they did not make, or unauthorized or want to report a charge.
+    5.SingleTransactions:This scenario is applicable when the user is seeking information about charge/transaction/purchase/item(having singular reference). The user is refering to only singular form of transacition/charge implicitly or explicitly.
+    6.NA:Classify the user utternace as 'NA' when you cannot classify it into any of the above categories.
+  expected_output: |
+    I want the output in json, below are few examples of sample output:
+    Let's say the classified scenario is DeclinedTransaction, then the output should be:
+    {'classifiedSubIntent':'CustomerSpecificQuestion','classifiedScenario':'DeclinedTransaction'}
+    And so on for all scenario. Remember the 'classifiedSubIntent' will always be 'CustomerSpecificQuestion' irrespiective of what the scenario is classified as.
+  agent: Customer_support_agent
+    
+
+
+
+    
