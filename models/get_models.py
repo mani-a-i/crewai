@@ -2,9 +2,9 @@ from langchain_huggingface import HuggingFaceEndpoint
 import google.generativeai as genai
 from google.generativeai.generative_models import GenerativeModel
 from settings import get_settings
+from crewai import LLM
 
 env = get_settings()
-print(env.HUGGINGFACEHUB_API_TOKEN)
 
 def get_vanillaMISTRAL() -> HuggingFaceEndpoint:
     try:
@@ -40,9 +40,8 @@ def get_vanillaLlama3_8B_Instruct() -> HuggingFaceEndpoint:
         print(f"Llama3 not working....{e}")
 
 def get_gemini_flash()->GenerativeModel:
-    try:
-        genai.configure(api_key=env.GEMINI_API_KEY)
-        llm = genai.GenerativeModel("gemini-1.5-flash")
+    try:        
+        llm =  LLM(model="gemini/gemini-1.5-flash",api_key=env.GEMINI_API_KEY)
         return llm
     except Exception as e:
         print(f"gemini not working...{e}")

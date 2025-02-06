@@ -47,9 +47,9 @@ def agentic_routers() -> APIRouter:
     
     @router.post("/geminiFlash",
                  tags=['vanillaEndpoints'],
-                 summary="Endpoints to call gemini 1.5 flash")
+                 summary="Endpoints to call gemini 1.5 flash via Crewai(llmLite)")
     async def call_llm(payload: VanillaChatPayload) -> dict[str,str]:        
-        output:GenerateContentResponse = global_llm.gemini_flash.generate_content(payload.prompt)
+        output:str = global_llm.gemini_flash.call(payload.prompt)
 
         return {
             "llm_output":output.text

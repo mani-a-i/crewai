@@ -5,6 +5,7 @@ from typing import Type
 from models.get_models import get_vanillaMISTRAL,get_vanillaZephyr_7b_beta, get_vanillaLlama3_8B_Instruct,get_gemini_flash
 from fastapi import FastAPI
 from routers.agent import router
+from crewai import LLM
 import warnings
 warnings.filterwarnings('ignore')
 
@@ -13,7 +14,7 @@ def load_models()->None:
     global_llm.Mistral8x7b: HuggingFaceEndpoint = get_vanillaMISTRAL() #type: ignore
     global_llm.Zephyr_7b_beta: HuggingFaceEndpoint = get_vanillaZephyr_7b_beta() #type: ignore
     global_llm.llama3_8B_Instruct: HuggingFaceEndpoint = get_vanillaLlama3_8B_Instruct() #type: ignore
-    global_llm.gemini_flash:GenerativeModel = get_gemini_flash() #type: ignore
+    global_llm.gemini_flash:LLM = get_gemini_flash() #type: ignore
     
 
 load_models()
