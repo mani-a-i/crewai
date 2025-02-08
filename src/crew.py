@@ -1,5 +1,5 @@
-from crewai import Agent, Crew, Task
-from crewai.project import CrewBase, agent, task
+from crewai import Agent, Crew, Task, Process
+from crewai.project import CrewBase, agent, task, crew
 from models import llm_registry as global_llm
 
 
@@ -22,4 +22,15 @@ class IVRBot():
         return Task(
             config=self.task_config['Customer_support_agent_task']
         )
+    
+    @crew
+    def crew(self) -> Crew:
+        return Crew(
+            agents=self.Customer_support_agent,
+            tasks=self.Customer_support_agent_task,
+            process= Process.sequential,
+            verbose=True
+        )
+    
+    
     
