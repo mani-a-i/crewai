@@ -2,7 +2,7 @@ from fastapi import APIRouter
 from settings import get_settings
 from schemas.schema import VanillaChatPayload
 from models import llm_registry as global_llm
-from helper import mistral_prompt_template, zephyr_prompt_template,llama_prompt_template
+from helper import mistral_prompt_template, zephyr_prompt_template,llama_prompt_template, openAI_chatTemplate
 from google.generativeai.types.generation_types import GenerateContentResponse
 env = get_settings()
 
@@ -48,11 +48,12 @@ def agentic_routers() -> APIRouter:
     @router.post("/geminiFlash",
                  tags=['vanillaEndpoints'],
                  summary="Endpoints to call gemini 1.5 flash via Crewai(llmLite)")
-    async def call_llm(payload: VanillaChatPayload) -> dict[str,str]:        
-        output:str = global_llm.gemini_flash.call(payload.prompt)
+    async def call_llm(payload: VanillaChatPayload) -> dict[str,str]: 
+        prompt:str = openAI_chatTemplate(payload.prompt)       
+        output:str = global_llm.gemini_flash.call(prompt)
 
         return {
-            "llm_output":output.text
+            "llm_output":output
         }
     
     return router

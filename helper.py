@@ -10,3 +10,13 @@ def zephyr_prompt_template(prompt:str) -> str:
 def llama_prompt_template(prompt:str) -> str:
     prompt_template:str = "<|begin_of_text|><|start_header_id|>user<|end_header_id|> {input_prompt} <|eot_id|><|start_header_id|>assistant<|end_header_id|>"
     return prompt_template.format(input_prompt = prompt) 
+
+
+def openAI_chatTemplate(prompt:str) -> str:
+    message :str = [
+                        {"role":"user",
+                        "content":prompt
+                        }
+                     ]
+    return message
+
