@@ -40,9 +40,13 @@ def get_vanillaLlama3_8B_Instruct() -> HuggingFaceEndpoint:
         print(f"Llama3 not working....{e}")
 
 def get_gemini_flash()->GenerativeModel:
-    try:        
-        llm =  LLM(model="gemini/gemini-1.5-flash",api_key=env.GEMINI_API_KEY)
-        return llm
+    try:
+        if env.GEMINI_API_KEY:        
+            llm =  LLM(model="gemini/gemini-1.5-flash",api_key=env.GEMINI_API_KEY)
+            return llm
+        else:
+            raise Exception("No api key found for Gemini,")
+        
     except Exception as e:
         print(f"gemini not working...{e}")
 
