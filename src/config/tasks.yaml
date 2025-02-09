@@ -9,10 +9,9 @@ Customer_support_agent_task:
     5.SingleTransactions:This scenario is applicable when the user is seeking information about charge/transaction/purchase/item(having singular reference). The user is refering to only singular form of transacition/charge implicitly or explicitly.
     6.NA:Classify the user utternace as 'NA' when the user utternace is non-banking related or you cannot classify it into any of the above categories.
   expected_output: |
-    I want the output in json, below are few examples of sample output:
-    Let's say the classified scenario is DeclinedTransaction, then the output should be:
-    {'classifiedSubIntent':'CustomerSpecificQuestion','classifiedScenario':'DeclinedTransaction'}
-    And so on for all scenario. Remember the 'classifiedSubIntent' will always be 'CustomerSpecificQuestion' irrespiective of what the scenario is classified as.
+    I want the output in as a python dict, below are few examples of sample output:
+    Let's say the classified scenario is DeclinedTransaction, then the output should be:{'classifiedSubIntent':'CustomerSpecificQuestion','classifiedScenario':'DeclinedTransaction'} And so on for all scenario.
+    Remember the 'classifiedSubIntent' will always be 'CustomerSpecificQuestion' irrespiective of what the scenario is classified as.   
     
   agent: Customer_support_agent
     
