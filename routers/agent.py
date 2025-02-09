@@ -4,6 +4,7 @@ from schemas.schema import VanillaChatPayload
 from models import llm_registry as global_llm
 from helper import mistral_prompt_template, zephyr_prompt_template,llama_prompt_template, openAI_chatTemplate
 from google.generativeai.types.generation_types import GenerateContentResponse
+from src.crew import IVRBot
 env = get_settings()
 
 def agentic_routers() -> APIRouter:
@@ -55,6 +56,22 @@ def agentic_routers() -> APIRouter:
         return {
             "llm_output":output
         }
+    
+    @router.post("/classificationCrewKickoff",
+                 tags=["crew"],
+                 summary="Endpoint to call classification crew")
+    async def classification_crew(payload:VanillaChatPayload):
+        ivr = IVRBot()
+        inputs = {
+            'user_utterances': payload.prompt
+        }
+        output = ivr.crew().kickoff(inputs = inputs)        
+
+        return {
+            "Output":output
+        }     
+        
+
     
     return router
 

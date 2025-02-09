@@ -6,9 +6,9 @@ from models import llm_registry as global_llm
 @CrewBase
 class IVRBot():
     """ IVRBot Crew"""
-    agents_config = "config/agents.yaml"
-    task_config = "config/tasks.yaml"
-
+    agents_config = r"config\agents.yaml"
+    tasks_config = r"config\tasks.yaml"    
+    
     @agent
     def Customer_support_agent(self) -> Agent:
         return Agent(
@@ -19,18 +19,21 @@ class IVRBot():
     
     @task
     def Customer_support_agent_task(self) -> Task:
+        
         return Task(
-            config=self.task_config['Customer_support_agent_task']
+            config=self.tasks_config['Customer_support_agent_task']            
         )
     
     @crew
     def crew(self) -> Crew:
         return Crew(
-            agents=self.Customer_support_agent,
-            tasks=self.Customer_support_agent_task,
+            agents=self.agents,
+            tasks=self.tasks,
             process= Process.sequential,
             verbose=True
         )
+    
+
     
     
     

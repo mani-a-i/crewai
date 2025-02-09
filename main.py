@@ -25,7 +25,12 @@ def create_app()->FastAPI:
         title="CREWAI POC",
         openapi_tags= [{
             "name":"vanillaEndpoints"
-        }]
+        },
+        {
+            "name":"crew"
+        }       
+        
+        ]
     )
 
     app.include_router(router)
