@@ -1,6 +1,7 @@
 from crewai import Agent, Crew, Task, Process
 from crewai.project import CrewBase, agent, task, crew
 from models import llm_registry as global_llm
+from schemas.schema import AgentOutput
 
 
 @CrewBase
